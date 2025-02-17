@@ -11,19 +11,19 @@ function Login() {
 
   const validateForm = () => {
     if (!email) {
-      setError('Please enter your email address');
+      setError('Vul je e-mailadres in');
       return false;
     }
     if (!email.includes('@')) {
-      setError('Please enter a valid email address');
+      setError('Voer een geldig e-mailadres in');
       return false;
     }
     if (!password) {
-      setError('Please enter your password');
+      setError('Voer je wachtwoord in');
       return false;
     }
     if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError('Wachtwoord moet minstens 6 tekens lang zijn.');
       return false;
     }
     return true;
@@ -46,9 +46,9 @@ function Login() {
       });
 
       if (signInError) {
-        if (signInError.message === 'Invalid login credentials') {
+        if (signInError.message === 'Ongeldige inloggegevens.') {
           setError(
-            'Incorrect email or password. Please try again or click "Register" to create a new account.'
+            'Onjuist e-mailadres of wachtwoord. Probeer het opnieuw of klik op "Registreren" om een nieuw account aan te maken.'
           );
         } else {
           setError(signInError.message);
@@ -69,10 +69,10 @@ function Login() {
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
+           Login met je account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            Enter your email and password to access the chat helpdesk
+            Vul je gegevens in om in te loggen
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
@@ -84,28 +84,28 @@ function Login() {
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email" className="sr-only">
-                Email address
+                Email adres
               </label>
               <input
                 id="email"
                 type="email"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                placeholder="Email adres"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
               <label htmlFor="password" className="sr-only">
-                Password
+                Wachtwoord
               </label>
               <input
                 id="password"
                 type="password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
+                placeholder="Wachtwoord"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -122,16 +122,16 @@ function Login() {
                   : 'bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
               }`}
             >
-              {loading ? 'Signing in...' : 'Sign in'}
+              {loading ? 'Inloggen...' : 'Login'} 
             </button>
           </div>
         </form>
         <div className="text-center space-y-2">
           <Link to="/register" className="text-indigo-600 hover:text-indigo-500 block">
-            Don't have an account? Register
+            Heb je geen account? Regisreer dan hier.
           </Link>
           <p className="text-sm text-gray-600">
-            Make sure you're using the correct email and password that you registered with.
+          Zorg ervoor dat je de juiste e-mail en het juiste wachtwoord gebruikt waarmee je je geregistreerd hebt.
           </p>
         </div>
       </div>

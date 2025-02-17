@@ -75,7 +75,7 @@ function Chat() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen scroll-smooth">
       <header className="bg-indigo-600 p-4">
         <div className="flex justify-between items-center">
           <h1 className="text-white text-xl font-bold">Chat Helpdesk</h1>
@@ -83,7 +83,7 @@ function Chat() {
             onClick={handleSignOut}
             className="bg-white text-indigo-600 px-4 py-2 rounded-md hover:bg-indigo-100"
           >
-            Sign Out
+            Log uit
           </button>
         </div>
       </header>
@@ -92,7 +92,7 @@ function Chat() {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`flex ${message.user_id === user?.id ? 'justify-end' : 'justify-start'}`}
+            className={`flex  ${message.user_id === user?.id ? 'justify-end' : 'justify-start'}`}
           >
             <div
               className={`max-w-xs md:max-w-md p-3 rounded-lg ${
@@ -101,7 +101,7 @@ function Chat() {
                   : 'bg-gray-200 text-gray-900'
               }`}
             >
-              <p className="text-sm font-semibold">{message.user_email}</p>
+              <p className="text-sm font-bold text-zinc-200">{message.user_email}</p>
               <p>{message.content}</p>
             </div>
           </div>
@@ -114,14 +114,14 @@ function Chat() {
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type your message..."
+            placeholder="Typ je bericht..."
             className="flex-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           <button
             type="submit"
             className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
-            Send
+            Stuur
           </button>
         </div>
       </form>
